@@ -1,0 +1,2 @@
+import Link from "next/link";
+export default function Home(){return <main className="mx-auto max-w-4xl p-8"><section className="card"><p className="text-sm font-semibold text-indigo-600">Workflow-first SaaS for artists</p><h1 className="mt-3 text-4xl font-bold">Run your monthly mail club without spreadsheets.</h1><p className="mt-4 text-slate-600">Manage clubs, plans, subscribers, addresses, mail runs, and label exports from one calm workspace.</p><Link className="btn mt-6" href="/dashboard">Open dashboard</Link></section></main>}

@@ -1,0 +1,2 @@
+import { prisma } from "@/lib/db/prisma";
+export async function logEvent(input:{artistAccountId:string; action:string; objectType:string; objectId:string; actorUserId?:string; metadata?: unknown}){return prisma.auditLog.create({data:{artistAccountId:input.artistAccountId,actorUserId:input.actorUserId,action:input.action,objectType:input.objectType,objectId:input.objectId,metadata: input.metadata === undefined ? undefined : JSON.parse(JSON.stringify(input.metadata))}});}
