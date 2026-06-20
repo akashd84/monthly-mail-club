@@ -1,0 +1,5 @@
+"use server";
+import { revalidatePath } from "next/cache";import { z } from "zod";import { getCurrentArtist } from "@/lib/auth/session";import { prisma } from "@/lib/db/prisma";
+async function assertClub(clubId:string){const a=await getCurrentArtist(); await prisma.club.findFirstOrThrow({where:{id:clubId,artistAccountId:a.id}});}
+export async function createSubscriber(clubId:string,formData:FormData){await assertClub(clubId); const d=z.object({email:z.string().email(),firstName:z.string().min(1),lastName:z.string().min(1),clubPlanId:z.string().optional()}).parse(Object.fromEntries(formData)); await prisma.subscriber.create({data:{clubId,email:d.email,firstName:d.firstName,lastName:d.lastName,subscriptions:d.clubPlanId?{create:{clubPlanId:d.clubPlanId}}:undefined}}); revalidatePath(`/clubs/${clubId}/subscribers`);}
+export async function archiveSubscriber(clubId:string,subscriberId:string){await assertClub(clubId); await prisma.subscriber.updateMany({where:{id:subscriberId,clubId},data:{status:"ARCHIVED",archivedAt:new Date()}}); revalidatePath(`/clubs/${clubId}/subscribers`);}

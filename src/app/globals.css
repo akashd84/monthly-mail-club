@@ -1,0 +1,4 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+:root{--background:42 40% 98%;--foreground:222 47% 11%;--border:220 13% 91%;--primary:243 75% 59%;--primary-foreground:0 0% 100%}body{@apply bg-background text-foreground}a{@apply text-primary}.card{@apply rounded-xl border bg-white p-5 shadow-sm}.btn{@apply inline-flex items-center justify-center rounded-lg bg-primary px-4 py-2 text-sm font-medium text-primary-foreground hover:opacity-90}.btn-secondary{@apply inline-flex items-center justify-center rounded-lg border bg-white px-4 py-2 text-sm font-medium}.input{@apply w-full rounded-lg border px-3 py-2}.label{@apply text-sm font-medium}.table{@apply w-full text-left text-sm}.table th{@apply border-b p-3 font-semibold}.table td{@apply border-b p-3 align-top}

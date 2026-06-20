@@ -1,0 +1,2 @@
+export type PlanSnapshot = { planId:string; planName:string; items:{ itemId:string; name:string; quantity:number }[] };
+export function calculateRequiredItems(snapshots: PlanSnapshot[]){const counts = new Map<string,{name:string;quantity:number}>(); for(const plan of snapshots){for(const item of plan.items){const existing=counts.get(item.itemId) ?? {name:item.name,quantity:0}; existing.quantity += item.quantity; counts.set(item.itemId, existing);}} return Array.from(counts.entries()).map(([itemId,value])=>({itemId,...value}));}
