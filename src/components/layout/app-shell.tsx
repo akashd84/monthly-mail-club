@@ -1,0 +1,2 @@
+import Link from "next/link";
+export function AppShell({children}:{children:React.ReactNode}){return <div><header className="border-b bg-white"><nav className="mx-auto flex max-w-6xl items-center gap-4 p-4"><Link className="font-bold text-foreground" href="/dashboard">Monthly Mail Club</Link><Link href="/clubs">Clubs</Link><Link href="/account">Account</Link></nav></header><main className="mx-auto max-w-6xl p-4 md:p-8">{children}</main></div>}
